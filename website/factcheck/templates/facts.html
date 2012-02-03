@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>Facts</title>
+		<style type="text/css">
+			body {
+				background: #dedfe1;
+				margin: 0;
+				padding: 0;
+				font-family: Helvetica;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #000;
+			}
+			
+			div, h1, h2, h3 {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#container {
+				width: 960px;
+				margin: 0 auto;
+			}
+			
+			#header {
+				height: 100px;
+				background: #54748d;
+			}
+			
+			#header h1 {
+				padding: 30px 0 0 50px;
+			}
+			
+			#header h1 a {
+				color: #FFFFFF;
+			}
+			
+			#content {
+				background: #FFFFFF;
+				padding: 0 0 50px 0;
+			}
+			
+			.fact {
+				margin: 15px 50px 0;
+				padding: 10px;
+				border: 2px solid #dedfe1;
+				display: block;
+			}
+			
+			.fact:hover {
+				border: 2px solid #54748d;
+			}
+			
+			.fact p {
+				line-height: 1.5em;
+			}
+			
+			.true {
+				color: green;
+			}
+			
+			.not_true {
+				color: red;
+			}
+		
+		</style>
+	</head>
+	<body>
+		{% include "header.html" %}
+		<div id="container">
+			<div id="content">	
+				{% if facts %}
+					{% for fact in facts %}
+						<a class="fact" href="/facts/{{ fact.id }}/">
+							<h3>{{ fact.title }}</h3>
+							<p>{{ fact.claim }}</p>
+							
+						</a>
+					{% endfor %}
+				{% else %}
+					<h1>No facts</h1>
+				{% endif %}
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+	</body>
+</html>
