@@ -1,0 +1,166 @@
+body {
+    background: url(img/bg0_tile.png);
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    font-family: Sans-Serif;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+div, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#top_bar
+{
+    position: fixed;
+    display:block;
+    left: 0px;
+    right: 0px;
+    height: 35px;
+    background: #000000;
+}
+#bar_content
+{
+    width: 960px;
+    padding: 5px;
+}
+
+#bar_content a
+{
+    color: #FFFFFF;
+    float: right;
+    padding: 2px 25px 0 0;
+}
+#bar_content input
+{
+    float: right;
+    background: #B1B1B1;
+}
+#container {
+    background: url(img/bg1_tile.jpg);
+    background-repeat: repeat;
+    width: 960px;
+    height: auto;
+    margin: 0 auto;
+    padding: 35px 0 50px 0;
+    overflow:auto;
+}
+
+#header
+{
+    margin: 0 0 0 20px;
+}
+
+#content {
+    display:block;
+}
+
+#fact_detail
+{
+    margin: 10px 25px 5px 70px;
+    float:left;
+    width: 530px;
+    display:inline-block;
+}
+
+#fact_detail a
+{
+    color: #b20707;
+}
+
+#tweet_bar
+{
+    float:right;
+    width: 250px;
+    display:inline-block;
+    border-left-style:groove;
+    border-color:#FFFFFF;
+    border-width: 2px;
+    padding: 10px 50px 50px 20px;
+}
+
+#tweet_bar #title
+{
+    font-size: 1.8em;
+    line-height: 1.2em;
+    margin: 0 0 0.6em 0;
+    color: #32CCFD;
+    text-shadow: 0 0.07em #FFFFFF,0 -0.05em #777777;
+}
+
+.fact {
+    margin: 10px 75px 5px 70px;
+    display: block;
+}
+
+.fact:hover {
+    //border: 3px solid #b20707;
+}
+
+.fact_title {
+    font-size: 1.8em;
+    line-height: 1.2em;
+    margin: 0 0 0.2em 0;
+    color: #606060;
+    text-shadow: 0 0.07em #FFFFFF, 0 -0.05em #777777;
+}
+
+.fact:hover  .fact_title {
+    color: #b20707;
+}
+
+.fact_meta {
+    line-height: 1em;
+    color: #808080;
+    margin: 0 0 0.4em 0;
+}
+
+.fact_brief {
+    line-height: 1.5em;
+    color: #191919;
+}
+
+.partition
+{
+    margin: 0 0 0 40px;
+}
+
+.tweet_meta
+{
+    line-height: 1em;
+    color: #808080;
+    margin: 0.5em 0 1em 0;
+}
+
+.tweet
+{
+    margin: 1em 0;
+    line-height: 1.5em;
+    border-bottom-style:solid;
+    border-color:#808080;
+    border-width: 1px;
+}
+
+#no_tweets {
+    margin: 15px 0;
+}
+
+#no_tweets p {
+    margin: 0 0 0 10px;
+    font-weight: bold;
+}
+
+
+.true {
+    color: #8FE415;
+}
+
+.not_true {
+    color: #b20707;
+}

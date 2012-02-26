@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Status</title>
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
+        <meta name="description" content="Fact Spreader"/>
+        <meta name="keywords" content=" "/>
+        <meta name="author" content=" "/>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    </head>
+    <body>
+        {% include "header.html" %}
+         <div id = "container">
+            Last id was {{last_id}}
+            {{new_count}} new articles were fetched
+        </div>
+    </body>
+</html>

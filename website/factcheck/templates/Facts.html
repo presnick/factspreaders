@@ -1,0 +1,33 @@
+
+<!-- saved from url=(0028)http://127.0.0.1:8000/facts/ -->
+<html>
+    <head>
+		<title>Fact Spreader</title>
+        <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+        <meta name="description" content="Fact Spreader"/>
+		<meta name="keywords" content=" "/>
+		<meta name="author" content=" "/>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	</head>
+	<body>
+		{% include "header.html" %}
+			<div id ="content">
+                <div id = "fact_list">
+					{% if facts %}
+						{% for fact in facts %}
+							<a class = "fact" href = "/facts/{{ fact.id }}/">
+								<div class = "fact_title">{{ fact.title }}</div>
+								<div class = "fact_meta">Feb. 22, 2012 by John Smith through Fact Spreaders</div>
+								<div class = "fact_brief">{{ fact.claim|truncatewords:25 }}</div>
+							</a>
+							
+							<div class = "partition">
+								<img src = "{{ STATIC_URL }}images/line.png" />
+							</div>
+						{% endfor %}
+					{% endif %}
+                </div>    
+			</div>
+		</div>
+    </body>
+</html>
