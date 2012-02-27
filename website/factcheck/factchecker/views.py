@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from factcheck.factchecker.models import Factcheck, Tweet
-import simplejson
+import json
 import urllib
 import urllib2
 
@@ -49,7 +49,7 @@ def fetch_tweets(article_id, article_obj, last_id, limit):
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
     
-    tweets = simplejson.loads(response.read()) #15 is start of JSON, -19 is end of JSON
+    tweets = json.loads(response.read()) #15 is start of JSON, -19 is end of JSON
     
     #if tweet_dict != None: 
     if tweets:
@@ -65,7 +65,7 @@ def fetch_articles(last_id, limit):
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
     
-    article_list = simplejson.loads(response.read()) #15 is start of JSON, -19 is end of JSON
+    article_list = json.loads(response.read()) #15 is start of JSON, -19 is end of JSON
     if article_list != None:
         for article in article_list:
             fc = Factcheck(remote_id=article["QID"], title=article['TITLE'], claim=article['CONTENT'])
