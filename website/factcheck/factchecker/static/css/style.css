@@ -24,6 +24,7 @@ div, h1, h2, h3 {
     right: 0px;
     height: 35px;
     background: #000000;
+    z-index: 1000;
 }
 #bar_content
 {
@@ -77,7 +78,7 @@ div, h1, h2, h3 {
 #tweet_bar
 {
     float:right;
-    width: 250px;
+    width: 255px;
     display:inline-block;
     border-left-style:groove;
     border-color:#FFFFFF;
@@ -145,6 +146,28 @@ div, h1, h2, h3 {
     border-bottom-style:solid;
     border-color:#808080;
     border-width: 1px;
+}
+
+.tweet .tweet_buttons {
+	margin-bottom: 1em;
+	overflow: auto;
+}
+
+.tweet .tweet_buttons a {
+	display: block;
+	background: #FFF;
+	float: left;
+	margin: 0 1em 0.33em;
+	padding: 5px;
+	border-radius: 3px;
+	-moz-box-shadow: 5px 5px 1px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 2px 2px 1px #888;
+}
+
+.tweet .tweet_buttons a:hover {
+	background: #32CCFD;
+	color: #FFF;	
 }
 
 #no_tweets {

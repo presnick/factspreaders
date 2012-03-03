@@ -11,10 +11,14 @@ class Tweet(models.Model):
     tweet_date = models.DateField()
     content = models.TextField()
     fact = models.ForeignKey('Factcheck')
+    tweet_html = models.TextField()
+    tweet_id = models.IntegerField()
     remote_id = models.IntegerField()
     
 class Factcheck(models.Model):
     title = models.CharField(max_length=30)
     claim = models.TextField()
-    status = models.TextField()
+    status = models.CharField(max_length=20)
+    url = models.TextField()
+    source = models.CharField(max_length=50)
     remote_id = models.IntegerField()

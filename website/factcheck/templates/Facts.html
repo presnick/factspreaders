@@ -17,7 +17,7 @@
 						{% for fact in facts %}
 							<a class = "fact" href = "/facts/{{ fact.id }}/">
 								<div class = "fact_title">{{ fact.title }}</div>
-								<div class = "fact_meta">Feb. 22, 2012 by John Smith through Fact Spreaders</div>
+								<div class = "fact_meta">Source: {{ fact.source }}</div>
 								<div class = "fact_brief">{{ fact.claim|truncatewords:25 }}</div>
 							</a>
 							

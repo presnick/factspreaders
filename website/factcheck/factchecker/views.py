@@ -2,11 +2,12 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from factcheck.factchecker.models import Factcheck, Tweet
 import json
+import logging
+import re
 import urllib
 import urllib2
 
 # import the logging library
-import logging
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -41,6 +42,22 @@ def tweets(request, fact_req):
     tweets = Tweet.objects.filter(fact__id=fact_req).order_by('id').reverse()
     return render_to_response('Tweets.html', {'fact': fact_obj, 'tweets': tweets}, context_instance=RequestContext(request))
 
+def fetch_tweet_html(tweet_id):
+    print tweet_id
+    url = "https://api.twitter.com/1/statuses/oembed.json?id="
+    url += str(tweet_id)
+    
+    req = urllib2.Request(url)
+    try:
+        response = urllib2.urlopen(req)
+        tweet_dict = json.loads(response.read())
+        if tweet_dict:
+            return tweet_dict['html']
+    except:
+        return "TWEET FETCH ERROR"
+    
+    
+
 def fetch_tweets(article_id, article_obj, last_id, limit):
     url = "http://newton.si.umich.edu/rumors_demo/rumors.php"
     params = { "func": "getTweets", "article_id": article_id, "algorithm_id": 1, "last_tweet_id:": last_id, "ret_limit": limit }
@@ -54,8 +71,16 @@ def fetch_tweets(article_id, article_obj, last_id, limit):
     #if tweet_dict != None: 
     if tweets:
         for tweet in tweets:
-            tw = Tweet(remote_id=int(tweet["TID"]), content=tweet["CONTENT"], tweet_date="2012-02-21", fact=article_obj)
+            html = fetch_tweet_html(tweet["TWITTER_ID"])
+            tw = Tweet(remote_id=int(tweet["TID"]), tweet_id=int(tweet["TWITTER_ID"]), tweet_html=html, content=tweet["CONTENT"], tweet_date="2012-02-21", fact=article_obj)
             tw.save()
+
+def get_article_source(url):
+    new_url = re.search(r'www.*\.(com|net|org)', url)
+    if new_url:
+        return new_url.group(0)
+    else:
+        return "ERROR WITH SOURCE"
 
 def fetch_articles(last_id, limit):
     url = "http://newton.si.umich.edu/rumors_demo/rumors.php"
@@ -68,5 +93,6 @@ def fetch_articles(last_id, limit):
     article_list = json.loads(response.read()) #15 is start of JSON, -19 is end of JSON
     if article_list != None:
         for article in article_list:
-            fc = Factcheck(remote_id=article["QID"], title=article['TITLE'], claim=article['CONTENT'])
+            article_source = get_article_source(article['LINK'])
+            fc = Factcheck(remote_id=article["QID"], url=article['LINK'], source=article_source, title=article['TITLE'], claim=article['CONTENT'])
             fc.save()
