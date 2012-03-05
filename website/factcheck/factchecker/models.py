@@ -16,9 +16,9 @@ class Tweet(models.Model):
     remote_id = models.IntegerField()
     
 class Factcheck(models.Model):
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=140)
     claim = models.TextField()
-    status = models.CharField(max_length=20)
+    status = models.CharField(max_length=140)
     url = models.TextField()
-    source = models.CharField(max_length=50)
+    source = models.CharField(max_length=240)
     remote_id = models.IntegerField()

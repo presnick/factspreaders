@@ -86,13 +86,14 @@ def fetch_articles(last_id, limit):
     url = "http://newton.si.umich.edu/rumors_demo/rumors.php"
     params = { "func": "getArticles", "last_article_id": last_id, "ret_limit": limit }
     data = urllib.urlencode(params)
-    
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
     
-    article_list = json.loads(response.read()) #15 is start of JSON, -19 is end of JSON
+    article_list = json.loads(response.read())
+    
     if article_list != None:
         for article in article_list:
             article_source = get_article_source(article['LINK'])
             fc = Factcheck(remote_id=article["QID"], url=article['LINK'], source=article_source, title=article['TITLE'], claim=article['CONTENT'])
             fc.save()
+        return len(article_list)
