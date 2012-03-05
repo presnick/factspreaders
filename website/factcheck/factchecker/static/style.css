@@ -1,5 +1,5 @@
 body {
-    background: url(img/bg0_tile.png);
+    background: url(../images/bg0_tile.png);
     background-repeat: repeat;
     margin: 0;
     padding: 0;
@@ -24,6 +24,7 @@ div, h1, h2, h3 {
     right: 0px;
     height: 35px;
     background: #000000;
+    z-index: 1000;
 }
 #bar_content
 {
@@ -43,7 +44,7 @@ div, h1, h2, h3 {
     background: #B1B1B1;
 }
 #container {
-    background: url(img/bg1_tile.jpg);
+    background: url(../images/bg1_tile.jpg);
     background-repeat: repeat;
     width: 960px;
     height: auto;
@@ -77,7 +78,7 @@ div, h1, h2, h3 {
 #tweet_bar
 {
     float:right;
-    width: 250px;
+    width: 255px;
     display:inline-block;
     border-left-style:groove;
     border-color:#FFFFFF;
@@ -91,7 +92,7 @@ div, h1, h2, h3 {
     line-height: 1.2em;
     margin: 0 0 0.6em 0;
     color: #32CCFD;
-    text-shadow: 0 0.07em #FFFFFF,0 -0.05em #777777;
+    text-shadow: 0 2px #FFFFFF,0 -1px #777777;
 }
 
 .fact {
@@ -108,7 +109,7 @@ div, h1, h2, h3 {
     line-height: 1.2em;
     margin: 0 0 0.2em 0;
     color: #606060;
-    text-shadow: 0 0.07em #FFFFFF, 0 -0.05em #777777;
+    text-shadow: 0 2px #FFFFFF, 0 -1px #777777;
 }
 
 .fact:hover  .fact_title {
@@ -145,6 +146,28 @@ div, h1, h2, h3 {
     border-bottom-style:solid;
     border-color:#808080;
     border-width: 1px;
+}
+
+.tweet .tweet_buttons {
+	margin-bottom: 1em;
+	overflow: auto;
+}
+
+.tweet .tweet_buttons a {
+	display: inline;
+	background: #FFF;
+	float: right;
+	margin: 0 2px 2px 0.33em;
+	padding: 5px;
+	border-radius: 3px;
+	-moz-box-shadow: 5px 5px 1px #888;
+	-webkit-box-shadow: 10px 10px 5px #888;
+	box-shadow: 2px 2px 1px #888;
+}
+
+.tweet .tweet_buttons a:hover {
+	background: #32CCFD;
+	color: #FFF;	
 }
 
 #no_tweets {
