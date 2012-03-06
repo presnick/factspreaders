@@ -43,7 +43,6 @@ def tweets(request, fact_req):
     return render_to_response('Tweets.html', {'fact': fact_obj, 'tweets': tweets}, context_instance=RequestContext(request))
 
 def fetch_tweet_html(tweet_id):
-    print tweet_id
     url = "https://api.twitter.com/1/statuses/oembed.json?id="
     url += str(tweet_id)
     
@@ -94,6 +93,11 @@ def fetch_articles(last_id, limit):
     if article_list != None:
         for article in article_list:
             article_source = get_article_source(article['LINK'])
-            fc = Factcheck(remote_id=article["QID"], url=article['LINK'], source=article_source, title=article['TITLE'], claim=article['CONTENT'])
+            fc = Factcheck(remote_id=article["QID"], 
+                           url=article['LINK'], 
+                           source=article_source, 
+                           title=article['TITLE'], 
+                           claim=article['CONTENT'],
+                           status=article['CONCLUSION'])
             fc.save()
         return len(article_list)

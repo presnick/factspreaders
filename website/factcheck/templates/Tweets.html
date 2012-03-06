@@ -30,7 +30,7 @@
 			<div id = "content">
                 <div id = "fact_detail">
 					{% if fact %}
-						<div class = "fact_title">{{ fact.title }} - <span class = "not_true"></span></div>
+						<div class = "fact_title">{{ fact.title }} - <span class = "not_true">{{ fact.status }}</span></div>
 						<div class = "fact_meta">Source: <a href='{{ fact.url }}'>{{ fact.source }}</a></div>
 						<div class = "fact_brief">{{ fact.claim }}</div>
 						<br>
